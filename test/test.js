@@ -89,6 +89,7 @@ test('compiling android goes as expected', () => {
 });
 
 //非同期コードのテスト
+// https://qiita.com/tapioca24/items/917ce59af30b45791876
 
 //コールバック
 //非同期にデータを取得して、返ってくるデータが'peanut butter'という文字列であることを確認するテスト
@@ -115,3 +116,70 @@ test('compiling android goes as expected', () => {
 
 //promiseがrejectされることを期待するケースでは、.catchメソッドを使用する
 
+// test('the fetch fails with an error', () => {
+//     expect.assertions(1);
+//     return fetchData().catch(e => expect(e.toMatch('error')));
+// });
+
+// expect宣言で .resolves マッチャを使うこともでき、Jestはそのpromiseが解決されるまで待機します。 promiseがrejectされた場合は、テストは自動的に失敗します。
+// もしこの return 文を省略した場合、あなたのテストは、fetchDataがresolveされpromiseが返ってくる前に実行され、then() 内のコールバックが実行される前に完了してしまいます。
+
+// test('the data is peanut butter', () => {
+//     return expect(fetchData()).resolves.toBe('peanut butter');
+// });
+
+// promiseがrejectされることを期待するケースでは.rejects マッチャを使用してください。 .resolvesマッチャと似た動作をします。 promiseが成功した場合は、テストは自動的に失敗します。
+// test('the fetch fails with an error', () => {
+//     return expect(fetchData()).rejexts.toMatch('error');
+// });
+
+// Async/Await
+
+//また、async と awaitをテストで使用できます。 非同期テストを書くには、 testに渡す関数の前にasync キーワードを記述するだけです。
+//例えば、同じfetchData シナリオは次のようにテストできます:
+
+// test('the data is peanut butter', async () => {
+//     const data = await fetchData();
+//     expect(data).toBe('peanut butter');
+// });
+
+// test('the fetch fails with an error', async () => {
+//     expect.assertions(1);
+//     try {
+//         await fetchData();
+//     } catch (e) {
+//         expect(e).toMatch('error');
+//     }
+// });
+
+// async と await を .resolves または .reject と組み合わせることができます。
+// test('the data is peanut butter', async() => {
+//     await expect(fetchData()).resolves.toBe('peanut butter');
+// });
+
+// test('the fetch fails with an error', async() => {
+//     await expect(fetchData()).rejects.toMatch('error');
+// });
+
+//テストごとにセットアップ作業を繰り返し実行する
+// 多くのテストで繰り返し行う必要がある場合は、beforeEach と afterEach を使用します。
+
+//ワンタイムセットアップ
+// セットアップがファイルの先頭で一回だけ実行されることが必要なケースがあります。
+//このセットアップが非同期で行われる場合は特に面倒になるので、インラインでは実施できません。
+// Jest はこの状況に対応するために beforeAll と afterAll を提供しています。
+
+//スコープ
+//デフォルトでは before と after ブロックはファイルの中の各テストに適用されます。
+//一方であなたは describe ブロックを使って複数のテストをグループ化することができます。
+// それらのブロックが describe ブロックの中にあるときは、 before と after ブロックは describe ブロックの中のテストにだけに適用されます。
+
+// describe('', () => {});
+
+//一般的なアドバイス
+//もしテストが失敗して、まず最初に調べるべきことの一つはそのテストが単体で実行された場合にも失敗するかどうかということです。
+// Jest で一度だけテストを実行するには、 test コマンドを test.only に一時的に変更します。
+
+test.only('this will be the only test that runs', () => {
+    expect(true).toBe(false);
+});

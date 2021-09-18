@@ -1,0 +1,22 @@
+始め方
+
+npm
+npm install --save-dev jest
+
+yarn
+yarn add --dev jest
+
+package.json
+{
+  "scripts": {
+    "test": "jest"
+  }
+}
+
+ユニットテストの実行
+npm test
+
+Test Suites：テストファイルごとの結果
+Tests：テストケースごとの結果
+Snapshots：取ったSnapshotの数
+Time：実行にかかった時間
