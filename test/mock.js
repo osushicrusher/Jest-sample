@@ -19,7 +19,6 @@ expect(someMockFunction.mock.calls[0][0]).toBe('first arg');
 // 関数の 1 回目の呼び出しの 2 番目の引数は 'second arg' だった
 expect(someMockFunction.mock.calls[0][1]).toBe('second arg');
 
-
 // 関数の 1 回目の呼び出しの返り値は 'return value' だった
 expect(someMockFunction.mock.results[0].value).toBe('return value');
 
