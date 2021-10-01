@@ -29,3 +29,4 @@ expect(someMockFunction.mock.instances.length).toBe(2);
 // この関数の 1 回目のインスタンス化で返されたインスタンスは、
 // `name` プロパティを持っており、その値は 'test' であった
 expect(someMockFunction.mock.instances[0].name).toEqual('test');
+
