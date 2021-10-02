@@ -30,3 +30,4 @@ expect(someMockFunction.mock.instances.length).toBe(2);
 // `name` プロパティを持っており、その値は 'test' であった
 expect(someMockFunction.mock.instances[0].name).toEqual('test');
 
+
