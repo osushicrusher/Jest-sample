@@ -10,6 +10,7 @@
 // 全てのモック関数には.mockプロパティがある。モック関数呼び出し時のデータと関数の返り値が記録されている。
 // 各呼び出し時のthisの値も記録されているため、thisの値もチェック可能です。
 
+
 // function はちょうど 1 回だけ呼ばれた
 expect(someMockFunction.mock.calls.length).toBe(1);
 
